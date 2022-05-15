@@ -1,0 +1,13 @@
+[Unit]
+Description=My sample app service
+After=network.target
+
+[Service]
+Type=simple
+Restart=on-failure
+User=root
+WorkingDirectory=/home/pi/Documents/scripts
+ExecStart=/home/pi/Documents/scripts/my-sample-app.py
+
+[Install]
+WantedBy=multi-user.target

@@ -1,0 +1,52 @@
+#
+# /etc/fail2ban/action.d/sample.conf
+#
+# Author:Toon Ketels
+# Modified by: Mohammad Hafiz bin Ismail [mypapit @gmail.com]
+# 
+# $Revision$
+#
+
+[Definition]
+
+# Option:  actionstart
+# Notes.:  command executed once at the start of Fail2Ban.
+# Values:  CMD
+#
+actionstart = /home/pi/scripts/my-app/my-app.py "Fail2Ban Information:" "Fail2Ban jail started."
+
+# Option:  actionstop
+# Notes.:  command executed once at the end of Fail2Ban
+# Values:  CMD
+#
+actionstop = /home/pi/scripts/my-app/my-app.py "Fail2Ban Alert:" "Fail2Ban jail stopped."
+
+# Option:  actioncheck
+# Notes.:  command executed once before each actionban command
+# Values:  CMD
+#
+actioncheck =
+
+# Option:  actionban
+# Notes.:  command executed when banning an IP. Take care that the
+#          command is executed with Fail2Ban user rights.
+# Tags:    <ip>  IP address
+#          <failures>  number of failures
+#          <time>  unix timestamp of the ban time
+# Values:  CMD
+#
+actionban = /home/pi/scripts/my-app/my-app.py "Fail2Ban Alert:" "The following IP Address has been banned:" <ip>
+
+# Option:  actionunban
+# Notes.:  command executed when unbanning an IP. Take care that the
+#          command is executed with Fail2Ban user rights.
+# Tags:    <ip>  IP address
+#          <failures>  number of failures
+#          <time>  unix timestamp of the ban time
+# Values:  CMD
+#
+actionunban = /home/pi/scripts/my-app/my-app.py "Fail2Ban Alert:" "The following IP Address has been unbanned:" <ip>
+
+[Init]
+
+init = 'Fail2Ban Telegram plugins activated'
